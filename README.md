@@ -3,9 +3,9 @@
 > A simple HTTP Proxy which randomly generates HTTP errors.
 
 Based on the configurations, it will proxy some of the incoming requests to
-a remote server, while some of them will just generate random HTTP errors (e.g. 404, 500, etc).
+the specified remote server, while some of them will just generate random HTTP errors (e.g. 404, 500, etc).
 
-### Use case:
+### Use case
 
 You may want to check that your application is tolerant to remote API failures.
 
@@ -30,7 +30,8 @@ $ npm run start sample-urls.js
 ```
 
 ### Configurations
-A configuration file is a JS module which export an object with this shape:
+
+A configuration file is a JS module which exports an object with this shape:
 ```javascript
 module.exports = {
   port: 4000,
