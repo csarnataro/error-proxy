@@ -17,7 +17,7 @@ Somehow similar to [Shopify Toxiproxy](https://github.com/Shopify/toxiproxy) or 
 
 1. Clone the repo
 1. Install dependencies
-1. Run the proxy
+1. Launch the proxy on your local machine
 
 ```shell
 $ git clone https://github.com/csarnataro/error-proxy
@@ -29,8 +29,11 @@ $ npm install
 $ npm run start sample-urls.js
 ```
 
+The proxy should start on port 4000. You can check the result in
+your browser navigating to http://localhost:4000/posts
+
 ### Configurations
-A configuration file is a JS module which export an object with this shape:
+A configuration file is a JS module which exports an object with this shape:
 ```javascript
 module.exports = {
   port: 4000,
@@ -75,6 +78,20 @@ They're in the form:
 E.g. in the example above, if we have an error (because of the `probability: 0.9`), then we have an 80% chance to generate a 404 error and a 20% chance to generate a 500 error.
 
 If no `codes` are provided, then (in case of an error) we generate a 500 error by default.
+
+## Demo
+
+1. Launch the dev server with command
+
+```shell
+$ npm run start sample-urls.js
+```
+
+2. Open `demo/index.html` in your browser (doesn't need to launch a local http server)
+
+3. Just observe what's happening in the developer console.
+  * Some of the requests to `localhost:4000` server will return 100 posts from the wonderful API https://jsonplaceholder.typicode.com/
+  * Some of the requests will return a 404 or 500 error. The page will show which error occurred 
 
 ### Development
 

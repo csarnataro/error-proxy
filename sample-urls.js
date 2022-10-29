@@ -16,7 +16,7 @@ module.exports = {
     },
     {
       url: /\/posts\b/,
-      probability: 0.05,
+      probability: 0.5,
       codes: {
         '404': {
           weight: 0.7
