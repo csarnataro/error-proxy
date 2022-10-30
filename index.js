@@ -31,6 +31,11 @@ app.use(
       try {
         possiblyGenerateErrorCode(req.url, urlsGeneratingErrors)
       } catch (err) {
+        if (err.cause === 'close') {
+          console.log('Connection closed');
+          res.socket.destroy();
+          return;
+        }
         res.setHeader('Access-Control-Allow-Origin', '*');
         res.setHeader('Access-Control-Allow-Methods', '*');
         res.setHeader('Access-Control-Allow-Headers', '*');

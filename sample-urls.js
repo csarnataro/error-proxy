@@ -4,26 +4,32 @@ module.exports = {
   urlsGeneratingErrors: [
     {
       url: /\/todos\b/,
-      probability: 0.9,
+      probability: 0.6,
       codes: {
         '404': {
-          weight: 0.9
-        },
-        '500': {
-          weight: 0.1
-        },
-      }
-    },
-    {
-      url: /\/posts\b/,
-      probability: 0.5,
-      codes: {
-        '404': {
-          weight: 0.7
+          weight: 0.3
         },
         '500': {
           weight: 0.3
         },
+        'close': {
+          weight: 0.3
+        }
+      }
+    },
+    {
+      url: /\/posts/,
+      probability: 0.8,
+      codes: {
+        '404': {
+          weight: 0.3
+        },
+        '500': {
+          weight: 0.3
+        },
+        'close': {
+          weight: 0.3
+        }
       }
     },
     {
