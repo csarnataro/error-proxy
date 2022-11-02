@@ -76,6 +76,8 @@ They're in the form:
 
 `codes` - the HTTP errors we can generate, with they're corresponding weight, i.e. relative probability.
 E.g. in the example above, if we have an error (because of the `probability: 0.9`), then we have an 80% chance to generate a 404 error and a 20% chance to generate a 500 error.
+A special error code of `close` will cause the socket to close abruptly, generating an empty response (which will likely produce a "Failed to fetch" error).
+
 
 If no `codes` are provided, then (in case of an error) we generate a 500 error by default.
 
