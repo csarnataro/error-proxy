@@ -19,7 +19,7 @@ const { urlsGeneratingErrors, port, target, prefix } = urls;
 const app = express();
 
 app.use(
-  '/*',
+  '*',
   createProxyMiddleware({
     target,
     plugins: [debugProxyErrorsPlugin, loggerPlugin, errorResponsePlugin, proxyEventsPlugin],    
@@ -36,22 +36,10 @@ app.use(
           res.socket.destroy();
           return;
         }
-        res.setHeader('Access-Control-Allow-Origin', '*');
-        res.setHeader('Access-Control-Allow-Methods', '*');
-        res.setHeader('Access-Control-Allow-Headers', '*');
         res.status(err.cause).send({
           message: err.message
         });        
       }
-    },
-    onProxyRes: (proxyRes, req, res) => {
-      const exchange = `[${req.method}] [${proxyRes.statusCode}] ${req.path} -> 
-      ${proxyRes.req.protocol}//${proxyRes.req.host}${proxyRes.req.path}`;
-      console.log(exchange);
-
-      proxyRes.headers['Access-Control-Allow-Origin'] = '*';
-      proxyRes.headers['Access-Control-Allow-Methods'] = '*';
-      proxyRes.headers['Access-Control-Allow-Headers'] = '*';
     },
     onError: (err, req, res, target) => {
       console.log(err);
